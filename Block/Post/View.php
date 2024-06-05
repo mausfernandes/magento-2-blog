@@ -244,7 +244,7 @@ class View extends \Mageplaza\Blog\Block\Listpost
     {
         $html = '';
         foreach (explode("\n", trim($comment)) as $value) {
-            $html .= '<p>' . $value . '</p>';
+            $html .= '<p>' . $this->escapeHtml($value) . '</p>';
         }
 
         return $html;
@@ -285,7 +285,7 @@ class View extends \Mageplaza\Blog\Block\Listpost
                     . $userName . '</span>
                                 </div>
                                 <div class="cmt-row__cmt-content">
-                                   ' . $this->escapeHtml($this->commentHtml($comment['content'])) . '
+                                   ' . $this->commentHtml($comment['content']) . '
                                 </div>
                                 <div class="cmt-row__cmt-interactions interactions">
                                     <div class="interactions__btn-actions">
