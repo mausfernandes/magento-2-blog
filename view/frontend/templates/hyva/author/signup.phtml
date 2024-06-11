@@ -26,7 +26,7 @@ $author = $block->getAuthor();
 
 ?>
 <form enctype="multipart/form-data"
-      action="<?= $block->escapeHtml($block->getUrl('mpblog/author/register')) ?>" method="post" class="form"
+      action="<?= /** @noEscape */ $block->getUrl('mpblog/author/register') ?>" method="post" class="form"
       name="mp_blog_author_form"
       id="blog_signup_author"
 >
@@ -42,25 +42,25 @@ $author = $block->getAuthor();
 
         <br>
         <div class="field required mp-field ">
-            <label for="name" class="label"><span><?= $block->escapeHtml(__('Display Name ')) ?></span></label>
+            <label for="name" class="label"><span><?= /** @noEscape */ __('Display Name ') ?></span></label>
             <div class="control">
-                <input type="text" name="name" id="name" value="<?= $block->escapeHtml($author['name']) ?>"
+                <input type="text" name="name" id="name" value="<?= /** @noEscape */ $author['name'] ?>"
                        title="<?= $block->escapeHtmlAttr(__('Display Name')) ?>"
                        class="input-text" data-validate='{"required": true}'>
             </div>
         </div>
         <?php if (isset($author['status'])) : ?>
             <div class="field mp-field" style="margin-top: 1.5rem">
-                <label for="name" class="label"><span><?= $block->escapeHtml(__('Status')) ?></span></label>
+                <label for="name" class="label"><span><?= /** @noEscape */ __('Status') ?></span></label>
                 <div class="control">
-                    <span><?= $block->escapeHtml($author['status']) ?></span>
+                    <span><?= /** @noEscape */ $author['status'] ?></span>
                 </div>
             </div>
         <?php endif; ?>
 
         <div class="field mp-field mb-2">
             <label for="short_desciption" class="label">
-                <span><?= $block->escapeHtml(__('Short Description')) ?></span>
+                <span><?= /** @noEscape */ __('Short Description') ?></span>
             </label>
             <div class="control">
                 <textarea  name="short_description" id="short_description" rows="5" cols="19">
@@ -84,7 +84,7 @@ $author = $block->getAuthor();
                              class="small-image-preview v-middle">
                     </a>
                 <?php endif; ?>
-                <input type="file" name="image" id="image" value="<?= $block->escapeHtml($author['image']) ?>"
+                <input type="file" name="image" id="image" value="<?= /** @noEscape */ $author['image'] ?>"
                        title="<?= $block->escapeHtmlAttr(__('Avatar')) ?>"
                        class="input-file"
                        style="width: 90%;position: relative;top: -5px">
@@ -98,7 +98,7 @@ $author = $block->getAuthor();
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="url_key" class="label"><span><?= $block->escapeHtml(__('URL Key')) ?></span></label>
+            <label for="url_key" class="label"><span><?= /** @noEscape */ __('URL Key') ?></span></label>
             <div class="control">
                 <input type="text" name="url_key" id="url_key" value="<?= $block->escapeHtmlAttr($author['url_key']) ?>"
                        title="<?= $block->escapeHtmlAttr(__('URL Key')) ?>"
@@ -106,24 +106,24 @@ $author = $block->getAuthor();
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="full_url" class="label"><span><?= $block->escapeHtml(__('Full URL')) ?></span></label>
+            <label for="full_url" class="label"><span><?= /** @noEscape */ __('Full URL') ?></span></label>
             <div class="control">
                 <span class="mp_full_url">
-                    <?= $block->escapeHtml($block->getUrl("blog/author")
-                        . $author['url_key'] . $block->getUrlSuffix()) ?>
+                    <?= /** @noEscape */ $block->getUrl("blog/author")
+                        . $author['url_key'] . $block->getUrlSuffix() ?>
                 </span>
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="facebook_link" class="label"><span><?= $block->escapeHtml(__('Facebook Link')) ?></span></label>
+            <label for="facebook_link" class="label"><span><?= /** @noEscape */ __('Facebook Link') ?></span></label>
             <div class="control">
                 <input type="url" name="facebook_link" id="facebook_link"
-                       value="<?= $block->escapeHtml($author['facebook_link']) ?>"
+                       value="<?= /** @noEscape */ $author['facebook_link'] ?>"
                        title="<?= $block->escapeHtmlAttr(__('Facebook Link')) ?>" class="input-text">
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="twitter_link" class="label"><span><?= $block->escapeHtml(__('Twitter Link')) ?></span></label>
+            <label for="twitter_link" class="label"><span><?= /** @noEscape */ __('Twitter Link') ?></span></label>
             <div class="control">
                 <input type="url" name="twitter_link" id="twitter_link"
                        value="<?= $block->escapeHtmlAttr($author['twitter_link']) ?>"

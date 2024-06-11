@@ -163,9 +163,9 @@
                        autocomplete="off">
                 <div id="password-strength-meter-container" data-role="password-strength-meter" aria-live="polite">
                     <div id="password-strength-meter" class="password-strength-meter">
-                        <?= $block->escapeHtml(__('Password Strength')) ?>:
+                        <?= /** @noEscape */ __('Password Strength') ?>:
                         <span id="password-strength-meter-label" data-role="password-strength-meter-label">
-                            <?= $block->escapeHtml(__('No Password')) ?>
+                            <?= /** @noEscape */ __('No Password') ?>
                         </span>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
 
         </div>
         <div class="field confirmation required">
-            <label for="password-confirmation" class="label"><span><?= $block->escapeHtml(__('Confirm Password')) ?></span></label>
+            <label for="password-confirmation" class="label"><span><?= /** @noEscape */ __('Confirm Password') ?></span></label>
             <div class="control">
                 <input type="password" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
             </div>
@@ -182,10 +182,10 @@
     </fieldset>
     <div class="actions-toolbar">
         <div class="primary">
-            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Create an Account')) ?>"><span><?= $block->escapeHtml(__('Create an Account')) ?></span></button>
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Create an Account')) ?>"><span><?= /** @noEscape */ __('Create an Account') ?></span></button>
         </div>
         <div class="secondary">
-            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Back')) ?></span></a>
+            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= /** @noEscape */ __('Back') ?></span></a>
         </div>
     </div>
 </form>
