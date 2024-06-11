@@ -27,5 +27,5 @@ use Mageplaza\Blog\Model\Config\Source\Comments\Type;
 $_post = $block->getPost();
 ?>
 <span><i class="fa fa-calendar-times-o">&nbsp;</i>
-    <?= $block->escapeHtml($block->getDateFormat($_post->getPublishDate())) ?>
+    <?= /** @noEscape */ $block->getDateFormat($_post->getPublishDate()) ?>
 </span>

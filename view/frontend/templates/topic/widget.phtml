@@ -27,7 +27,7 @@ if ($topics && $topics->getSize()) : ?>
     <div class="mp-sidebar mpcss">
         <div class="row">
             <div class="block-title col-xs-12 sidebar-categories">
-                <p class="block-mp-sidebar-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('Topics')) ?></p>
+                <p class="block-mp-sidebar-heading" role="heading" aria-level="2"><?= /** @noEscape */ __('Topics') ?></p>
             </div>
             <div class="col-xs-12">
                 <ul class="block-content menu-categories">
@@ -35,7 +35,7 @@ if ($topics && $topics->getSize()) : ?>
                         <li class="category-item">
                             <a class="list-categories" href="<?= $block->escapeUrl($block->getTopicUrl($topic)) ?>">
                                 <i class="fa fa-folder-o" aria-hidden="true">&nbsp;</i>
-                                <?= $block->escapeHtml(ucfirst($topic->getName())) ?>
+                                <?= /** @noEscape */ ucfirst($topic->getName()) ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
