@@ -30,7 +30,7 @@ $categories = $block->getCollections();
         <?php if ($categories->getSize()) : ?>
             <span class="ui-menu-icon ui-icon ui-icon-carat-1-e"></span>
         <?php endif; ?>
-        <span><?= $block->escapeHtml($block->getBlogHomePageTitle()) ?></span>
+        <span><?= /** @noEscape */ $block->getBlogHomePageTitle() ?></span>
     </a>
     <?php if ($categories->getSize()) : ?>
         <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" aria-expanded="false" style="display: none; top: 47px; left: -0.15625px;" aria-hidden="true">

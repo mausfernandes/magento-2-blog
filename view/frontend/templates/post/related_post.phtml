@@ -25,7 +25,7 @@ use Mageplaza\Blog\Model\ResourceModel\Post\Collection;
 /** @var RelatedPost $block */
 $posts = $block->getRelatedPostList();
 if ($posts && $block->isEnabledBlog()) : ?>
-    <h2><?= $posts->getSize() ? $block->escapeHtml(__('Related Posts')) : $block->escapeHtml(__('No Related Posts')) ?></h2>
+    <h2><?= $posts->getSize() ? /** @noEscape */ __('Related Posts') : __('No Related Posts') ?></h2>
     <?php if ($block->getRelatedMode()) : ?>
         <div class="mp-blog-owl-carousel owl-carousel owl-theme">
             <?php foreach ($posts as $post) : ?>
@@ -35,12 +35,12 @@ if ($posts && $block->isEnabledBlog()) : ?>
                             <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
                                 <img class="img-responsive"
                                      src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
-                                     alt="<?= $block->escapeHtml($post->getName()); ?>"/>
+                                     alt="<?= /** @noEscape */ $post->getName(); ?>"/>
                             </a>
                             <h2 class="mp-post-title" style="margin: 20px 0;">
-                                <a class="post-link-title" title="<?= $block->escapeHtml($post->getName()); ?>"
+                                <a class="post-link-title" title="<?= /** @noEscape */ $post->getName(); ?>"
                                    href="<?= $block->escapeUrl($post->getUrl()) ?>">
-                                    <?= $block->escapeHtml($post->getName()) ?>
+                                    <?= /** @noEscape */ $post->getName() ?>
                                 </a>
                             </h2>
                         </div>
@@ -72,7 +72,7 @@ if ($posts && $block->isEnabledBlog()) : ?>
         <ul>
             <?php foreach ($posts as $post) : ?>
                 <li>
-                    <a href="<?= $block->escapeUrl($post->getUrl()) ?>"><?= $block->escapeHtml($post->getName()) ?></a>
+                    <a href="<?= $block->escapeUrl($post->getUrl()) ?>"><?= /** @noEscape */ $post->getName() ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

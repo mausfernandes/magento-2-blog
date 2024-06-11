@@ -36,7 +36,7 @@
         <?php if ($block->isNewsletterEnabled()): ?>
             <div class="field choice newsletter">
                 <input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
-                <label for="is_subscribed" class="label"><span><?= $block->escapeHtml(__('Sign Up for Newsletter')) ?></span></label>
+                <label for="is_subscribed" class="label"><span><?= /** @noEscape */ __('Sign Up for Newsletter') ?></span></label>
             </div>
             <?php /* Extensions placeholder */ ?>
             <?= $block->getChildHtml('customer.form.register.newsletter') ?>
@@ -61,7 +61,7 @@
     </fieldset>
     <?php if ($block->getShowAddressFields()): ?>
         <fieldset class="fieldset address">
-            <legend class="legend"><span><?= $block->escapeHtml(__('Address Information')) ?></span></legend><br>
+            <legend class="legend"><span><?= /** @noEscape */ __('Address Information') ?></span></legend><br>
             <input type="hidden" name="create_address" value="1" />
 
             <?php $_company = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Company') ?>
@@ -90,10 +90,10 @@
                         <?php for ($_i = 2, $_n = $this->helper('Magento\Customer\Helper\Address')->getStreetLines(); $_i <= $_n; $_i++): ?>
                             <div class="field additional">
                                 <label class="label" for="street_<?= /* @noEscape */ $_i ?>">
-                                    <span><?= $block->escapeHtml(__('Address')) ?></span>
+                                    <span><?= /** @noEscape */ __('Address') ?></span>
                                 </label>
                                 <div class="control">
-                                    <input type="text" name="street[]" value="<?= $block->escapeHtml($block->getFormData()->getStreetLine($_i - 1)) ?>" title="<?= $block->escapeHtmlAttr(__('Street Address %1', $_i)) ?>" id="street_<?= /* @noEscape */ $_i ?>" class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
+                                    <input type="text" name="street[]" value="<?= /** @noEscape */ $block->getFormData()->getStreetLine($_i - 1) ?>" title="<?= $block->escapeHtmlAttr(__('Street Address %1', $_i)) ?>" id="street_<?= /* @noEscape */ $_i ?>" class="input-text <?= $block->escapeHtmlAttr($_streetValidationClass) ?>">
                                 </div>
                             </div>
                         <?php endfor; ?>
@@ -112,9 +112,9 @@
                 <label for="region_id" class="label"><span><?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?></span></label>
                 <div class="control">
                     <select id="region_id" name="region_id" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="validate-select region_id" style="display:none;">
-                        <option value=""><?= $block->escapeHtml(__('Please select a region, state or province.')) ?></option>
+                        <option value=""><?= /** @noEscape */ __('Please select a region, state or province.') ?></option>
                     </select>
-                    <input type="text" id="region" name="region" value="<?= $block->escapeHtml($block->getRegion()) ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>" style="display:none;">
+                    <input type="text" id="region" name="region" value="<?= /** @noEscape */ $block->getRegion() ?>" title="<?= /* @noEscape */ $block->getAttributeData()->getFrontendLabel('region') ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('region')) ?>" style="display:none;">
                 </div>
             </div>
 
@@ -144,15 +144,15 @@
 
     <?php endif; ?>
     <fieldset class="fieldset create account" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
-        <legend class="legend"><span><?= $block->escapeHtml(__('Sign-in Information')) ?></span></legend><br>
+        <legend class="legend"><span><?= /** @noEscape */ __('Sign-in Information') ?></span></legend><br>
         <div class="field required">
-            <label for="email_address" class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <label for="email_address" class="label"><span><?= /** @noEscape */ __('Email') ?></span></label>
             <div class="control">
                 <input type="email" name="email" autocomplete="email" id="email_address" value="<?= $block->escapeHtmlAttr($block->getFormData()->getEmail()) ?>" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true, 'validate-email':true}">
             </div>
         </div>
         <div class="field password required">
-            <label for="password" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+            <label for="password" class="label"><span><?= /** @noEscape */ __('Password') ?></span></label>
             <div class="control">
                 <input type="password" name="password" id="password"
                        title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
