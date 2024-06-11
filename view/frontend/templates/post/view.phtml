@@ -351,7 +351,7 @@ $color        = $helper->getDisplayConfig('font_color');
                                         </div>
                                         <button class="default-cmt__content__cmt-block__cmt-box__cmt-btn__btn-submit
                                          primary btn-primary">
-                                            <?= $block->escapeHtml(__('Comment')) ?>
+                                            <?= /** @noEscape */ __('Comment') ?>
                                         </button>
                                     </div>
                                 </div>

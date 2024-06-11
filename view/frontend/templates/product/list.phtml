@@ -32,7 +32,7 @@ $_helper            = $block->getHelper();
 ?>
 <?php if (!$_productCollection->count()) : ?>
     <div class="message info empty">
-        <div><?= $block->escapeHtml(__('We can\'t find products matching the selection.')) ?></div>
+        <div><?= /** @noEscape */ __('We can\'t find products matching the selection.') ?></div>
     </div>
 <?php else : ?>
     <?= $block->getToolbarHtml() ?>
@@ -97,7 +97,7 @@ $_helper            = $block->getHelper();
                                             <?php if ($_product->isSaleable()) : ?>
                                                 <?php $postParams = $block->getAddToCartPostParams($_product); ?>
                                                 <form data-role="tocart-form"
-                                                      data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>"
+                                                      data-product-sku="<?= /** @noEscape */ $_product->getSku() ?>"
                                                       action="<?= $block->escapeUrl($postParams['action']) ?>"
                                                       method="post">
                                                     <input type="hidden" name="product"
@@ -109,16 +109,16 @@ $_helper            = $block->getHelper();
                                                     <button type="submit"
                                                             title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
                                                             class="action tocart primary">
-                                                        <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                                        <span><?= /** @noEscape */ __('Add to Cart') ?></span>
                                                     </button>
                                                 </form>
                                             <?php else : ?>
                                                 <?php if ($_product->isAvailable()) : ?>
                                                     <div class="stock available">
-                                                        <span><?= $block->escapeHtml(__('In stock')) ?></span></div>
+                                                        <span><?= /** @noEscape */ __('In stock') ?></span></div>
                                                 <?php else : ?>
                                                     <div class="stock unavailable">
-                                                        <span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+                                                        <span><?= /** @noEscape */ __('Out of stock') ?></span></div>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </div>
@@ -139,7 +139,7 @@ $_helper            = $block->getHelper();
                                             ) ?>
                                             <a href="<?= $block->escapeUrl($block->getParentProductUrl($_product)) ?>"
                                                title="<?= /* @noEscape */ $_productNameStripped ?>"
-                                               class="action more"><?= $block->escapeHtml(__('Learn More')) ?></a>
+                                               class="action more"><?= /** @noEscape */ __('Learn More') ?></a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -191,7 +191,7 @@ $_helper            = $block->getHelper();
                                             <?php if ($_product->isSaleable()) : ?>
                                                 <?php $postParams = $block->getAddToCartPostParams($_product); ?>
                                                 <form data-role="tocart-form"
-                                                      data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>"
+                                                      data-product-sku="<?= /** @noEscape */ $_product->getSku() ?>"
                                                       action="<?= $block->escapeUrl($postParams['action']) ?>"
                                                       method="post">
                                                     <input type="hidden"
@@ -204,16 +204,16 @@ $_helper            = $block->getHelper();
                                                     <button type="submit"
                                                             title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
                                                             class="action tocart primary">
-                                                        <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                                        <span><?= /** @noEscape */ __('Add to Cart') ?></span>
                                                     </button>
                                                 </form>
                                             <?php else : ?>
                                                 <?php if ($_product->isAvailable()) : ?>
                                                     <div class="stock available">
-                                                        <span><?= $block->escapeHtml(__('In stock')) ?></span></div>
+                                                        <span><?= /** @noEscape */ __('In stock') ?></span></div>
                                                 <?php else : ?>
                                                     <div class="stock unavailable">
-                                                        <span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+                                                        <span><?= /** @noEscape */ __('Out of stock') ?></span></div>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         </div>
@@ -234,7 +234,7 @@ $_helper            = $block->getHelper();
                                             ) ?>
                                             <a href="<?= $block->escapeUrl($block->getParentProductUrl($_product)) ?>"
                                                title="<?= /* @noEscape */ $_productNameStripped ?>"
-                                               class="action more"><?= $block->escapeHtml(__('Learn More')) ?></a>
+                                               class="action more"><?= /** @noEscape */ __('Learn More') ?></a>
                                         </div>
                                     <?php endif; ?>
                                 </div>

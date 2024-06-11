@@ -31,7 +31,7 @@ use Mageplaza\Blog\Block\Sidebar\Search;
 <div class="mpblog-search">
     <div class="field search">
         <label class="label" for="mpblog-search-box" data-role="minisearch-label">
-            <span><?= $block->escapeHtml(__('Search')) ?></span>
+            <span><?= /** @noEscape */ __('Search') ?></span>
         </label>
         <div class="control">
             <input id="mpblog-search-box"

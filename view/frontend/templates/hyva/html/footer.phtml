@@ -30,8 +30,8 @@ $helper = $block->getHelperData();
         <ul>
             <li>
                 <a class="text-base leading-6" <?= /** @noEscape */ $block->getLinkAttributes() ?>>
-                    <?= $block->escapeHtml($block->getLabel()); ?>
-                    <?= ($block->getCounter()) ? '<span>' . $block->escapeHtml($block->getCounter()) . '</span>' : ''; ?>
+                    <?= /** @noEscape */ $block->getLabel(); ?>
+                    <?= ($block->getCounter()) ? '<span>' . /** @noEscape */ $block->getCounter() . '</span>' : ''; ?>
                 </a>
             </li>
         </ul>
