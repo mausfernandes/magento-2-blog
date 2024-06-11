@@ -60,8 +60,8 @@ $jsonData       = json_encode($postDatas);
      <div id="mp-blog-new-post-popup">
         <header class="modal-header mb-3">
             <h3 id="popup_author_post" class="modal-title text-3xl border-b p-4" data-role="title">Add New Post</h3>
-        </header> 
-            {$block->getChildHtml('mpblog_manage_post')} 
+        </header>
+            {$block->getChildHtml('mpblog_manage_post')}
     </div>
 HTML
             ) ?>
@@ -117,7 +117,7 @@ HTML
                             </div>
                             <div class="post-info-action" data-postId="<?= $block->escapeHtml($post->getId()); ?>">
                                 <div class="mpblog-post-duplicate"
-                                     onclick='handleDuplicate(this,<?= json_encode($post->getData()) ?>)'
+                                     onclick='handleDuplicate(this,<?= /** @noEscape */ json_encode($post->getData()) ?>)'
                                 >
                                     <img
                                             src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/duplicate.svg')) ?>"
@@ -127,7 +127,7 @@ HTML
                                     />
                                 </div>
                                 <div class="mpblog-post-edit"
-                                     onclick='handleEdit(this,<?= json_encode($post->getData()) ?>)'>
+                                     onclick='handleEdit(this,<?= /** @noEscape */ json_encode($post->getData()) ?>)'>
                                     <img src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/writing.svg')) ?>"
                                          align="middle"
                                          alt="<?= $block->escapeHtmlAttr(__('Edit')); ?>"
@@ -203,7 +203,7 @@ HTML
         // open modal edit new post
         function handleEdit (e, data) {
             resetFormModal();
-            let listData           = <?php echo json_decode($jsonData) ?>;
+            let listData           = <?php echo /** @noEscape */ json_decode($jsonData) ?>;
             let dataSelect          = listData[data?.post_id];
             name.value              = dataSelect?.name;
             post_id.value           = dataSelect?.post_id;
@@ -223,7 +223,7 @@ HTML
         // open modal duplicate new post
         function handleDuplicate (e, data) {
             resetFormModal();
-            let listData           = <?php echo json_decode($jsonData) ?>;
+            let listData           = <?php echo /** @noEscape */ json_decode($jsonData) ?>;
             let dataSelect          = listData[data?.post_id];
             name.value              = dataSelect?.name;
             short_description.value = dataSelect?.short_description;

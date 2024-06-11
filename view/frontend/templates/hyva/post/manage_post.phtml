@@ -208,9 +208,9 @@ use Mageplaza\Blog\Block\Post\ManagePost;
         console.error(err.stack);
     });
 
-    const categories = <?php echo($block->getCategoriesTree()) ?>;
-    const topics     = <?php echo($block->getTopicTree()) ?>;
-    const tags       = <?php echo($block->getTagTree()) ?>;
+    const categories = <?php echo( /** @noEscape */ $block->getCategoriesTree()) ?>;
+    const topics     = <?php echo( /** @noEscape */ $block->getTopicTree()) ?>;
+    const tags       = <?php echo( /** @noEscape */$block->getTagTree()) ?>;
     const optionsCategories = categories?.map(data => {
         return {
             name: data?.label,
