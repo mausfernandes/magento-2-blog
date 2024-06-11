@@ -44,15 +44,15 @@ use Mageplaza\Blog\Model\Post;
                                 <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
                                     <img class="img-responsive"
                                          src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
-                                         alt="<?= $block->escapeHtml($post->getName()); ?>"/>
+                                         alt="<?= /** @noEscape */ $post->getName(); ?>"/>
                                 </a>
                             </div>
                         <?php endif; ?>
                         <div class="post-info-wraper">
                             <h2 class="mp-post-title">
-                                <a class="post-link-title" title="<?= $block->escapeHtml($post->getName()); ?>"
+                                <a class="post-link-title" title="<?= /** @noEscape */ $post->getName(); ?>"
                                    href="<?= $block->escapeUrl($post->getUrl()) ?>">
-                                    <?= $block->escapeHtml($post->getName()) ?>
+                                    <?= /** @noEscape */ $post->getName() ?>
                                 </a>
                             </h2>
                             <div class="mp-post-info">
@@ -66,7 +66,7 @@ use Mageplaza\Blog\Model\Post;
                                 <div class="actions">
                                     <a class="mp-read-more" href="<?= $block->escapeUrl($post->getUrl()) ?>"
                                        title="<?= $block->escapeHtmlAttr(__('Read More')) ?>">
-                                        <?= $block->escapeHtml(__('Read More')) ?>
+                                        <?= /** @noEscape */ __('Read More') ?>
                                     </a>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ use Mageplaza\Blog\Model\Post;
         </div>
         <?= $block->getPagerHtml() ?>
     <?php else : ?>
-        <?= $block->escapeHtml(__('There are no posts at this moment')) ?>
+        <?= /** @noEscape */ __('There are no posts at this moment') ?>
     <?php endif; ?>
     <?= $block->getChildHtml('additional'); ?>
 </div>

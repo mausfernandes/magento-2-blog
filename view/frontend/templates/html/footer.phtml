@@ -28,8 +28,8 @@ $helper = $block->getHelperData();
     <?php if ($helper->getBlogConfig('display/footer')) : ?>
         <li>
             <a <?= /** @noEscape */ $block->getLinkAttributes() ?>>
-                <?= $block->escapeHtml($block->getLabel()); ?>
-                <?= ($block->getCounter()) ? '<span>' . $block->escapeHtml($block->getCounter()) . '</span>' : ''; ?>
+                <?= /** @noEscape */ $block->getLabel(); ?>
+                <?= ($block->getCounter()) ? '<span>' . /** @noEscape */ $block->getCounter() . '</span>' : ''; ?>
             </a>
         </li>
     <?php endif; ?>

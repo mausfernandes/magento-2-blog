@@ -31,7 +31,7 @@ if ($block->isEnable() && $dateArrayUnique) : ?>
         <div class="row">
             <div class="block-title col-xs-12 sidebar-archives">
                 <p class="block-mp-sidebar-heading" role="heading"
-                   aria-level="2"><?= $block->escapeHtml(__('Monthly Archive')) ?></p>
+                   aria-level="2"><?= /** @noEscape */ __('Monthly Archive') ?></p>
             </div>
             <div class="col-xs-12">
                 <ul class="menu-archives">
@@ -41,7 +41,7 @@ if ($block->isEnable() && $dateArrayUnique) : ?>
                             <a class="list-archives"
                                href="<?= $block->escapeUrl($block->getMonthlyUrl(date("Y-m", $block->dateTime->timestamp($dateArrayUnique[$i])))) ?>">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
-                                <?= $block->escapeHtml($dateLabel[$i] . '   (' . $dateArrayCount[$i] . ')') ?>
+                                <?= /** @noEscape */ $dateLabel[$i] . '   (' . $dateArrayCount[$i] . ')' ?>
                             </a>
                         </li>
                     <?php endfor; ?>

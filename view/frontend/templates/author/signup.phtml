@@ -25,7 +25,7 @@ use Mageplaza\Blog\Block\Author\SignupForm;
 $author = $block->getAuthor();
 ?>
 <form enctype="multipart/form-data" data-mage-init='{"validation": {}}'
-      action="<?= $block->escapeHtml($block->getUrl('mpblog/author/register')) ?>" method="post" class="form"
+      action="<?= /** @noEscape */ $block->getUrl('mpblog/author/register') ?>" method="post" class="form"
       name="mp_blog_author_form">
     <fieldset class="fieldset">
         <legend class="legend">
@@ -33,16 +33,16 @@ $author = $block->getAuthor();
         </legend>
         <br>
         <div class="field required mp-field">
-            <label for="name" class="label"><span><?= $block->escapeHtml(__('Display Name')) ?></span></label>
+            <label for="name" class="label"><span><?= /** @noEscape */ __('Display Name') ?></span></label>
             <div class="control">
-                <input type="text" name="name" id="name" value="<?= $block->escapeHtml($author['name']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('Display Name')) ?>"
+                <input type="text" name="name" id="name" value="<?= /** @noEscape */ $author['name'] ?>"
+                       title="<?= /** @noEscape */ __('Display Name') ?>"
                        class="input-text" data-validate="{required:true, 'validate-no-empty':true}">
             </div>
         </div>
         <?php if (isset($author['status'])) : ?>
             <div class="field mp-field">
-                <label for="name" class="label"><span><?= $block->escapeHtml(__('Status')) ?></span></label>
+                <label for="name" class="label"><span><?= /** @noEscape */ __('Status') ?></span></label>
                 <div class="control">
                     <span><?= $block->escapeHtml($author['status']) ?></span>
                 </div>

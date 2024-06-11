@@ -21,10 +21,10 @@
 ?>
 <?php if ($block->isBlogEnabled()) : ?>
     <div class="field choice mp-blog-sign-up-author">
-        <input type="checkbox" name="is_mp_author" title="<?= $block->escapeHtmlAttr(__('Sign Up to be an Author')) ?>"
+        <input type="checkbox" name="is_mp_author" title="<?= /** @noEscape  */ __('Sign Up to be an Author') ?>"
                value="1" id="is_mp_author" class="checkbox">
         <label for="is_mp_author" class="label">
-            <span><?= $block->escapeHtml(__('Sign Up to be an Author')) ?></span>
+            <span><?= /** @noEscape */ __('Sign Up to be an Author') ?></span>
         </label>
     </div>
 <?php endif; ?>
