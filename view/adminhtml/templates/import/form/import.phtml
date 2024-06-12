@@ -20,8 +20,10 @@
  */
 
 use Mageplaza\Blog\Block\Adminhtml\Import\Edit\Import;
+use Magento\Framework\Escaper;
 
 /** @var Import $block */
+/** @var Escaper $escaper */
 ?>
 <script>
     require(['jquery'], function ($) {
@@ -85,7 +87,7 @@ use Mageplaza\Blog\Block\Adminhtml\Import\Edit\Import;
             initImportCheckConnection: function () {
                 if ($('#edit_form').valid()) {
                     $('body').loader('show');
-                    var url = '<?= $block->escapeUrl($block->getUrl(
+                    var url = '<?= $escaper->escapeUrl($block->getUrl(
                         'mageplaza_blog/import/validate',
                         ['form_key' => $block->getFormKey()]
                     )) ?>';
@@ -134,7 +136,7 @@ use Mageplaza\Blog\Block\Adminhtml\Import\Edit\Import;
             importAction: function () {
                 $('body').loader('show');
                 $.ajax({
-                    url: '<?= $block->escapeUrl($block->getUrl(
+                    url: '<?= $escaper->escapeUrl($block->getUrl(
                         'mageplaza_blog/import/import',
                         ['form_key' => $block->getFormKey()]
                     ))?>',
