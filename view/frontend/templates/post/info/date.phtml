@@ -22,10 +22,12 @@
 use Mageplaza\Blog\Block\Post\View;
 use Mageplaza\Blog\Helper\Image;
 use Mageplaza\Blog\Model\Config\Source\Comments\Type;
+use Magento\Framework\Escaper;
 
 /** @var View $block */
+/** @var Escaper $escaper */
 $_post = $block->getPost();
 ?>
 <span><i class="fa fa-calendar-times-o">&nbsp;</i>
-    <?= /** @noEscape */ $block->getDateFormat($_post->getPublishDate()) ?>
+    <?= $escaper->escapeHtml($block->getDateFormat($_post->getPublishDate())) ?>
 </span>
