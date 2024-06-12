@@ -20,13 +20,15 @@
  */
 
 use Mageplaza\Blog\Helper\Data;
+use Magento\Framework\Escaper;
 
+/** @var Escaper $escaper */
 $helper = $this->helper(Data::class);
 
 if ($helper->isEnabled() && $helper->getBlogConfig('display/toplinks')) : ?>
     <li class="nav-item level0 nav-5 level-top classic">
-        <a href="<?= /** @noEscape */ $helper->getBlogUrl('') ?>" class="level-top">
-            <span><?= $helper->getBlogConfig('display/name') ?: /** @noEscape */ __('Blog') ?></span>
+        <a href="<?= $escaper->escapeUrl($helper->getBlogUrl('')) ?>" class="level-top">
+            <span><?= $helper->getBlogConfig('display/name') ?: $escaper->escapeHtml(__('Blog')) ?></span>
         </a>
     </li>
 <?php endif; ?>

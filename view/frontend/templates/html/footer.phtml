@@ -20,16 +20,18 @@
  */
 
 use Mageplaza\Blog\Block\Html\Footer;
+use Magento\Framework\Escaper;
 
 /** @var Footer $block */
+/** @var Escaper $escaper */
 $helper = $block->getHelperData();
 ?>
 <?php if ($helper->isEnabled()) : ?>
     <?php if ($helper->getBlogConfig('display/footer')) : ?>
         <li>
             <a <?= /** @noEscape */ $block->getLinkAttributes() ?>>
-                <?= /** @noEscape */ $block->getLabel(); ?>
-                <?= ($block->getCounter()) ? '<span>' . /** @noEscape */ $block->getCounter() . '</span>' : ''; ?>
+                <?= $escaper->escapeHtml($block->getLabel()); ?>
+                <?= ($block->getCounter()) ? '<span>' . $escaper->escapeHtml($block->getCounter()) . '</span>' : ''; ?>
             </a>
         </li>
     <?php endif; ?>
