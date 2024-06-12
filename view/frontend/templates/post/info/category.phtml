@@ -22,13 +22,15 @@
 use Mageplaza\Blog\Block\Post\View;
 use Mageplaza\Blog\Helper\Image;
 use Mageplaza\Blog\Model\Config\Source\Comments\Type;
+use Magento\Framework\Escaper;
 
 /** @var View $block */
+/** @var Escaper $escaper */
 $_post = $block->getPost();
 ?>
 <?php if ($categoryHtml = $block->getPostCategoryHtml($_post)) : ?>
     |
     <span><i class="fa fa-folder-open-o">&nbsp;</i>
-        <?= /* @noEscape */ __('Categories: %1', $categoryHtml); ?>
+        <?= $escaper->escapeHtml(__('Categories: %1', $categoryHtml)); ?>
     </span>
 <?php endif; ?>

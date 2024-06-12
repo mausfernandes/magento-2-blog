@@ -20,7 +20,8 @@
 
 define([
     'jquery',
-    'prototype'
+    'prototype',
+    'extjs/ext-tree-checkbox'
 ], function (jQuery) {
 
     var categorySubmit = function (url, useAjax) {
@@ -51,11 +52,11 @@ define([
 
         // Make operations with Blog Category tree
         if (isCreating) {
-            if (!tree.currentNodeId) {
+            if (!Ext.tree.currentNodeId) {
                 // First submit of form - select some node to be current
-                tree.currentNodeId = parentId;
+                Ext.tree.currentNodeId = parentId;
             }
-            tree.addNodeTo = parentId;
+            Ext.tree.addNodeTo = parentId;
         }
 
         // Submit form

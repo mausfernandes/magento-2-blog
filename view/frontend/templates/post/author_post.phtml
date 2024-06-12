@@ -21,18 +21,20 @@
 
 use Mageplaza\Blog\Block\Post\AuthorPost;
 use Mageplaza\Blog\Model\Post;
+use Magento\Framework\Escaper;
 
 /** @var AuthorPost $block */
+/** @var Escaper $escaper */
 $postCollection = $block->getPostCollection();
 ?>
 <?php if (!$block->getAuthorStatus()) : ?>
     <div>
-        <h3><?= $block->escapeHtml(__('Your account must be licensed in order to perform the Post creation and management function')) ?></h3>
+        <h3><?= $escaper->escapeHtml(__('Your account must be licensed in order to perform the Post creation and management function')) ?></h3>
     </div>
 <?php else : ?>
     <div class="mp-blog-new-post">
-        <button type="button" class="action primary" title="<?= $block->escapeHtmlAttr(__('Add New Post')) ?>">
-            <?= $block->escapeHtml(__('Add New Post')) ?>
+        <button type="button" class="action primary" title="<?= $escaper->escapeHtmlAttr(__('Add New Post')) ?>">
+            <?= $escaper->escapeHtml(__('Add New Post')) ?>
         </button>
     </div>
     <div class="post-list-content" id="mpblog-list-container">
@@ -41,24 +43,24 @@ $postCollection = $block->getPostCollection();
                 <?php $i = 1 ?>
                 <?php /** @var Post $post */
                 foreach ($postCollection as $post) : ?>
-                    <div data-post-id="<?= $block->escapeHtml($post->getId()); ?>"
+                    <div data-post-id="<?= $escaper->escapeHtml($post->getId()); ?>"
                          class="post-list-item col-mp post-item-list mp-12">
                         <div class="post-item-wraper">
                             <?= /* @noEscape */ $block->getStatusHtmlById($post->getEnabled()) ?>
                             <?php if ($post->getImage()) : ?>
                                 <div class="post-image">
-                                    <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                                    <a href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
                                         <img class="img-responsive"
-                                             src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
-                                             alt="<?= $block->escapeHtmlAttr($post->getName()) ?>"/>
+                                             src="<?= $escaper->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
+                                             alt="<?= $escaper->escapeHtmlAttr($post->getName()) ?>"/>
                                     </a>
                                 </div>
                             <?php endif; ?>
                             <div class="post-info-wraper">
                                 <h2 class="mp-post-title">
-                                    <a class="post-link-title" title="<?= $block->escapeHtml($post->getName()); ?>"
-                                       href="<?= $block->escapeUrl($post->getUrl()) ?>">
-                                        <?= $block->escapeHtml($post->getName()) ?>
+                                    <a class="post-link-title" title="<?= $escaper->escapeHtml($post->getName()); ?>"
+                                       href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
+                                        <?= $escaper->escapeHtml($post->getName()) ?>
                                     </a>
                                 </h2>
                                 <div class="mp-post-info">
@@ -72,34 +74,34 @@ $postCollection = $block->getPostCollection();
                                 <div class="mp-clearfix"></div>
                                 <div class="mp-post-meta-info mp-alignright">
                                     <div class="actions">
-                                        <a class="mp-read-more" href="<?= $block->escapeUrl($post->getUrl()) ?>"
-                                           title="<?= $block->escapeHtmlAttr(__('Read More')) ?>">
-                                            <?= $block->escapeHtml(__('Read More')) ?>
+                                        <a class="mp-read-more" href="<?= $escaper->escapeUrl($post->getUrl()) ?>"
+                                           title="<?= $escaper->escapeHtmlAttr(__('Read More')) ?>">
+                                            <?= $escaper->escapeHtml(__('Read More')) ?>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-info-action" data-postId="<?= $block->escapeHtml($post->getId()); ?>">
+                            <div class="post-info-action" data-postId="<?= $escaper->escapeHtml($post->getId()); ?>">
                                 <div class="mpblog-post-duplicate">
                                     <img
-                                        src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/duplicate.svg')) ?>"
+                                        src="<?= $escaper->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/duplicate.svg')) ?>"
                                         align="middle"
-                                        alt="<?= $block->escapeHtmlAttr(__('Duplicate')); ?>"
-                                        title="<?= $block->escapeHtmlAttr(__('Duplicate')) ?>"
+                                        alt="<?= $escaper->escapeHtmlAttr(__('Duplicate')); ?>"
+                                        title="<?= $escaper->escapeHtmlAttr(__('Duplicate')) ?>"
                                     />
                                 </div>
                                 <div class="mpblog-post-edit" >
-                                    <img src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/writing.svg')) ?>"
+                                    <img src="<?= $escaper->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/writing.svg')) ?>"
                                          align="middle"
-                                         alt="<?= $block->escapeHtmlAttr(__('Edit')); ?>"
-                                         title="<?= $block->escapeHtmlAttr(__('Edit')) ?>"
+                                         alt="<?= $escaper->escapeHtmlAttr(__('Edit')); ?>"
+                                         title="<?= $escaper->escapeHtmlAttr(__('Edit')) ?>"
                                     />
                                 </div>
                                 <div class="mpblog-post-delete">
-                                    <img src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/delete.svg')) ?>"
+                                    <img src="<?= $escaper->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/delete.svg')) ?>"
                                          align="middle"
-                                         alt="<?= $block->escapeHtmlAttr(__('Delete')) ?>"
-                                         title="<?= $block->escapeHtmlAttr(__('Delete')) ?>"
+                                         alt="<?= $escaper->escapeHtmlAttr(__('Delete')) ?>"
+                                         title="<?= $escaper->escapeHtmlAttr(__('Delete')) ?>"
                                     />
                                 </div>
                             </div>
@@ -114,19 +116,19 @@ $postCollection = $block->getPostCollection();
             </div>
             <?= $block->getPagerHtml() ?>
         <?php else : ?>
-            <?= $block->escapeHtml(__('There are no posts at this moment')) ?>
+            <?= $escaper->escapeHtml(__('There are no posts at this moment')) ?>
         <?php endif; ?>
         <?= /* @noEscape */ $block->getChildHtml('additional') ?>
     </div>
     <script type="text/x-magento-init">
-            {
-                "*": {
-                    "Mageplaza_Blog/js/managePost": {
-                        "deleteUrl": "<?= $block->escapeHtml($block->getUrl('mpblog/post/deletepost')) ?>",
-                        "basePubUrl": "<?= $block->escapeHtml($block->getBaseMediaUrl()) ?>",
-                        "postDatas": <?= /* @noEscape */ $block->getPostDatas($postCollection) ?>,
-                        "editorVersion": "<?= $block->escapeHtml($block->getVersion()) ?>",
-                        "magentoVersion": "<?= $block->escapeHtml($block->getMagentoVersion()) ?>"
+        {
+            "*": {
+                "Mageplaza_Blog/js/managePost": {
+                    "deleteUrl": "<?= $escaper->escapeHtml($block->getUrl('mpblog/post/deletepost')) ?>",
+                        "basePubUrl": "<?= $escaper->escapeHtml($block->getBaseMediaUrl()) ?>",
+                        "postDatas": <?= $escaper->escapeHtml($block->getPostDatas($postCollection)) ?>,
+                        "editorVersion": "<?= $escaper->escapeHtml($block->getVersion()) ?>",
+                        "magentoVersion": "<?= $escaper->escapeHtml($block->getMagentoVersion()) ?>"
                     }
                 }
             }

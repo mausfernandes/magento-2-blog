@@ -20,13 +20,15 @@
  */
 
 use Mageplaza\Blog\Block\Author\SignupForm;
+use Magento\Framework\Escaper;
 
 /** @var SignupForm $block */
+/** @var Escaper $escaper */
 $author = $block->getAuthor();
 
 ?>
 <form enctype="multipart/form-data"
-      action="<?= $block->escapeHtml($block->getUrl('mpblog/author/register')) ?>" method="post" class="form"
+      action="<?= $escaper->escapeHtml($block->getUrl('mpblog/author/register')) ?>" method="post" class="form"
       name="mp_blog_author_form"
       id="blog_signup_author"
 >
@@ -42,25 +44,25 @@ $author = $block->getAuthor();
 
         <br>
         <div class="field required mp-field ">
-            <label for="name" class="label"><span><?= $block->escapeHtml(__('Display Name ')) ?></span></label>
+            <label for="name" class="label"><span><?= $escaper->escapeHtml(__('Display Name ')) ?></span></label>
             <div class="control">
-                <input type="text" name="name" id="name" value="<?= $block->escapeHtml($author['name']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('Display Name')) ?>"
+                <input type="text" name="name" id="name" value="<?= $escaper->escapeHtml($author['name']) ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__('Display Name')) ?>"
                        class="input-text" data-validate='{"required": true}'>
             </div>
         </div>
         <?php if (isset($author['status'])) : ?>
             <div class="field mp-field" style="margin-top: 1.5rem">
-                <label for="name" class="label"><span><?= $block->escapeHtml(__('Status')) ?></span></label>
+                <label for="name" class="label"><span><?= $escaper->escapeHtml(__('Status')) ?></span></label>
                 <div class="control">
-                    <span><?= $block->escapeHtml($author['status']) ?></span>
+                    <span><?= $escaper->escapeHtml($author['status']) ?></span>
                 </div>
             </div>
         <?php endif; ?>
 
         <div class="field mp-field mb-2">
             <label for="short_desciption" class="label">
-                <span><?= $block->escapeHtml(__('Short Description')) ?></span>
+                <span><?= $escaper->escapeHtml(__('Short Description')) ?></span>
             </label>
             <div class="control">
                 <textarea  name="short_description" id="short_description" rows="5" cols="19">
@@ -76,58 +78,58 @@ $author = $block->getAuthor();
             <div class="control" style="display: flex">
                 <?php if (!empty($author['image'])) : ?>
                     <a class="mp-image-link" style="margin-right: 15px;"
-                       href="<?= $block->escapeUrl($block->getImageUrl($author['image'], 'auth')) ?>">
-                        <img src="<?= $block->escapeUrl($block->getImageUrl($author['image'], 'auth')) ?>"
+                       href="<?= $escaper->escapeUrl($block->getImageUrl($author['image'], 'auth')) ?>">
+                        <img src="<?= $escaper->escapeUrl($block->getImageUrl($author['image'], 'auth')) ?>"
                              id="post_image_image"
-                             title="<?= $block->escapeHtmlAttr($author['image']) ?>"
-                             alt="<?= $block->escapeHtmlAttr($author['image']) ?>" height="70" width="70"
+                             title="<?= $escaper->escapeHtmlAttr($author['image']) ?>"
+                             alt="<?= $escaper->escapeHtmlAttr($author['image']) ?>" height="70" width="70"
                              class="small-image-preview v-middle">
                     </a>
                 <?php endif; ?>
-                <input type="file" name="image" id="image" value="<?= $block->escapeHtml($author['image']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('Avatar')) ?>"
+                <input type="file" name="image" id="image" value="<?= $escaper->escapeHtml($author['image']) ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__('Avatar')) ?>"
                        class="input-file"
                        style="width: 90%;position: relative;top: -5px">
                 <?php if (!empty($author['image'])) : ?>
                     <span class="delete-image" style="display: inline-flex;">
                     <input  type="checkbox" name="image[delete]" value="1" class="checkbox"
-                           id="post_image_delete">
+                            id="post_image_delete">
                     <label for="post_image_delete"> Delete Image</label>
                     </span>
                 <?php endif; ?>
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="url_key" class="label"><span><?= $block->escapeHtml(__('URL Key')) ?></span></label>
+            <label for="url_key" class="label"><span><?= $escaper->escapeHtml(__('URL Key')) ?></span></label>
             <div class="control">
-                <input type="text" name="url_key" id="url_key" value="<?= $block->escapeHtmlAttr($author['url_key']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('URL Key')) ?>"
+                <input type="text" name="url_key" id="url_key" value="<?= $escaper->escapeHtmlAttr($author['url_key']) ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__('URL Key')) ?>"
                        class="input-text">
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="full_url" class="label"><span><?= $block->escapeHtml(__('Full URL')) ?></span></label>
+            <label for="full_url" class="label"><span><?= $escaper->escapeHtml(__('Full URL')) ?></span></label>
             <div class="control">
                 <span class="mp_full_url">
-                    <?= $block->escapeHtml($block->getUrl("blog/author")
+                    <?= $escaper->escapeHtml($block->getUrl("blog/author")
                         . $author['url_key'] . $block->getUrlSuffix()) ?>
                 </span>
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="facebook_link" class="label"><span><?= $block->escapeHtml(__('Facebook Link')) ?></span></label>
+            <label for="facebook_link" class="label"><span><?= $escaper->escapeHtml(__('Facebook Link')) ?></span></label>
             <div class="control">
                 <input type="url" name="facebook_link" id="facebook_link"
-                       value="<?= $block->escapeHtml($author['facebook_link']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('Facebook Link')) ?>" class="input-text">
+                       value="<?= $escaper->escapeHtml($author['facebook_link']) ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__('Facebook Link')) ?>" class="input-text">
             </div>
         </div>
         <div class="field mp-field" style="margin-top: 1.5rem">
-            <label for="twitter_link" class="label"><span><?= $block->escapeHtml(__('Twitter Link')) ?></span></label>
+            <label for="twitter_link" class="label"><span><?= $escaper->escapeHtml(__('Twitter Link')) ?></span></label>
             <div class="control">
                 <input type="url" name="twitter_link" id="twitter_link"
-                       value="<?= $block->escapeHtmlAttr($author['twitter_link']) ?>"
-                       title="<?= $block->escapeHtmlAttr(__('Twitter Link')) ?>" class="input-text">
+                       value="<?= $escaper->escapeHtmlAttr($author['twitter_link']) ?>"
+                       title="<?= $escaper->escapeHtmlAttr(__('Twitter Link')) ?>" class="input-text">
             </div>
         </div>
     </fieldset>

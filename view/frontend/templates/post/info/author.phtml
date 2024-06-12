@@ -22,8 +22,10 @@
 use Mageplaza\Blog\Block\Post\View;
 use Mageplaza\Blog\Helper\Image;
 use Mageplaza\Blog\Model\Config\Source\Comments\Type;
+use Magento\Framework\Escaper;
 
 /** @var View $block */
+/** @var Escaper $escaper */
 $helper       = $block->getBlogHelper();
 $_post        = $block->getPost();
 $author       = $helper->getAuthorByPost($_post);
@@ -34,17 +36,17 @@ $modifierName = $modifier !== null ? $modifier->getName() : '';
 <?php if ($authorName && $helper->showAuthorInfo()) : ?>
     |
     <span><i class="fa fa-user">&nbsp;</i>
-                            <?= /* @noEscape */ __(
+                            <?= $escaper->escapeHtml(__(
                                 'By: %1',
                                 '<a class="mp-info" href="' . $author->getUrl() . '">' . $authorName . '</a>'
-                            ) ?></span>
+                            )) ?></span>
     <?php if ($authorName != $modifierName && $modifierName) : ?>
         |
         <span><i class="fa fa-edit">&nbsp;</i>
-                                <?= /* @noEscape */ __(
+                                <?= $escaper->escapeHtml(__(
                                     'Modify By: %1 at %2',
                                     '<a class="mp-info" href="' . $modifier->getUrl() . '">' . $modifierName . '</a>',
                                     $block->getDateFormat($_post->getUpdatedAt())
-                                ) ?></span>
+                                )) ?></span>
     <?php endif; ?>
 <?php endif; ?>
