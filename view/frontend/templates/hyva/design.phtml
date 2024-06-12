@@ -20,8 +20,10 @@
  */
 
 use Mageplaza\Blog\Block\Design;
+use Magento\Framework\Escaper;
 
 /** @var Design $block */
+/** @var Escaper $escaper */
 
 ?>
 <script type="text/javascript">
@@ -35,7 +37,7 @@ use Mageplaza\Blog\Block\Design;
                     columns.removeChild(sidebarMain);
                 }
             }
-            var currentTheme = "<?php echo /** @noEscape */ $block->getCurrentTheme(); ?>";
+            var currentTheme = "<?php echo $block->getCurrentTheme(); ?>";
             if (currentTheme === "Etheme/yourstore") {
                 body.classList.add('mpblog-etheme-yourstore');
             }
@@ -199,4 +201,3 @@ use Mageplaza\Blog\Block\Design;
         text-align: center;
     }
 </style>
-
