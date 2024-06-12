@@ -20,27 +20,29 @@
  */
 use Mageplaza\Blog\Block\Post\RelatedPost;
 use Mageplaza\Blog\Model\ResourceModel\Post\Collection;
+use Magento\Framework\Escaper;
 
 /** @var Collection $posts */
 /** @var RelatedPost $block */
+/** @var Escaper $escaper */
 $posts = $block->getRelatedPostList();
 if ($posts && $block->isEnabledBlog()) : ?>
-    <h2><?= $posts->getSize() ? /** @noEscape */ __('Related Posts') : __('No Related Posts') ?></h2>
+    <h2><?= $posts->getSize() ? $escaper->escapeHtml(__('Related Posts')) : $escaper->escapeHtml(__('No Related Posts')) ?></h2>
     <?php if ($block->getRelatedMode()) : ?>
         <div class="mp-blog-owl-carousel owl-carousel owl-theme">
             <?php foreach ($posts as $post) : ?>
                 <div class="item post-list-item col-mp post-item-list mp-4">
                     <div class="post-item-wraper">
                         <div class="post-info-wraper">
-                            <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                            <a href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
                                 <img class="img-responsive"
-                                     src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
-                                     alt="<?= /** @noEscape */ $post->getName(); ?>"/>
+                                     src="<?= $escaper->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
+                                     alt="<?= $escaper->escapeHtml($post->getName()); ?>"/>
                             </a>
                             <h2 class="mp-post-title" style="margin: 20px 0;">
-                                <a class="post-link-title" title="<?= /** @noEscape */ $post->getName(); ?>"
-                                   href="<?= $block->escapeUrl($post->getUrl()) ?>">
-                                    <?= /** @noEscape */ $post->getName() ?>
+                                <a class="post-link-title" title="<?= $escaper->escapeHtml($post->getName()); ?>"
+                                   href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
+                                    <?= $escaper->escapeHtml($post->getName()) ?>
                                 </a>
                             </h2>
                         </div>
@@ -72,7 +74,7 @@ if ($posts && $block->isEnabledBlog()) : ?>
         <ul>
             <?php foreach ($posts as $post) : ?>
                 <li>
-                    <a href="<?= $block->escapeUrl($post->getUrl()) ?>"><?= /** @noEscape */ $post->getName() ?></a>
+                    <a href="<?= $escaper->escapeUrl($post->getUrl()) ?>"><?= $escaper->escapeHtml($post->getName()) ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

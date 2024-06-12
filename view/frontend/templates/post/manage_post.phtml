@@ -20,24 +20,26 @@
  */
 
 use Mageplaza\Blog\Block\Post\ManagePost;
+use Magento\Framework\Escaper;
 
 /** @var ManagePost $block */
+/** @var Escaper $escaper */
 ?>
 <form enctype="multipart/form-data" data-mage-init='{"validation": {}}'
-      action="<?= /** @noEscape */ $block->getUrl('mpblog/post/manage')?>" method="post" class="form"
+      action="<?= $escaper->escapeHtml($block->getUrl('mpblog/post/manage'))?>" method="post" class="form"
       name="mp_blog_post_form" id="mp_blog_post_form">
     <fieldset class="fieldset">
         <div class="field required mp-field">
-            <label for="name" class="label"><span><?= /** @noEscape */ __('Post Name') ?></span></label>
+            <label for="name" class="label"><span><?= $escaper->escapeHtml(__('Post Name')) ?></span></label>
             <div class="control">
-                <input type="text" name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Post Name')) ?>"
+                <input type="text" name="name" id="name" title="<?= $escaper->escapeHtmlAttr(__('Post Name')) ?>"
                        class="input-text" data-validate="{required:true, 'validate-no-empty':true}">
             </div>
         </div>
         <input type="hidden" name="post_id" id="post_id">
         <div class="field mp-field">
             <label for="short_description" class="label">
-                <span><?= /** @noEscape */ __('Short Description') ?></span>
+                <span><?= $escaper->escapeHtml(__('Short Description')) ?></span>
             </label>
             <div class="control">
                 <textarea name="short_description" id="short_description" rows="5" cols="19"></textarea>
@@ -45,7 +47,7 @@ use Mageplaza\Blog\Block\Post\ManagePost;
         </div>
         <div class="field mp-field">
             <label for="post_content" class="label">
-                <span><?= /** @noEscape */ __('Post Content') ?></span>
+                <span><?= $escaper->escapeHtml(__('Post Content')) ?></span>
             </label>
             <div class="control">
                 <textarea name="post_content" id="post_content" rows="5" cols="19">
@@ -53,29 +55,29 @@ use Mageplaza\Blog\Block\Post\ManagePost;
             </div>
         </div>
         <div class="field mp-field">
-            <label for="image" class="label"><span><?= /** @noEscape */ __('Image') ?></span></label>
+            <label for="image" class="label"><span><?= $escaper->escapeHtml(__('Image')) ?></span></label>
             <div class="control">
-                <input type="file" name="image" id="image" title="<?= $block->escapeHtmlAttr(__('Image')) ?>"
+                <input type="file" name="image" id="image" title="<?= $escaper->escapeHtmlAttr(__('Image')) ?>"
                        class="input-file">
             </div>
         </div>
         <div class="mp-custom">
             <div class="field mp-field">
-                <label class="label"><span><?= /** @noEscape */ __('Select Category') ?></span></label>
+                <label class="label"><span><?= $escaper->escapeHtml(__('Select Category')) ?></span></label>
                 <div data-bind="scope: 'customCategory'">
                     <input name="categories_ids" data-bind="value: value" style="display: none"/>
                     <!-- ko template: getTemplate() --><!-- /ko -->
                 </div>
             </div>
             <div class="field mp-field">
-                <label class="label"><span><?= /** @noEscape */ __('Select Topic') ?></span></label>
+                <label class="label"><span><?= $escaper->escapeHtml(__('Select Topic')) ?></span></label>
                 <div data-bind="scope: 'customTopic'">
                     <input name="topics_ids" data-bind="value: value" style="display: none"/>
                     <!-- ko template: getTemplate() --><!-- /ko -->
                 </div>
             </div>
             <div class="field mp-field">
-                <label class="label"><span><?= /** @noEscape */ __('Select Tag') ?></span></label>
+                <label class="label"><span><?= $escaper->escapeHtml(__('Select Tag')) ?></span></label>
                 <div data-bind="scope: 'customTag'">
                     <input name="tags_ids" data-bind="value: value" style="display: none"/>
                     <!-- ko template: getTemplate() --><!-- /ko -->
@@ -83,16 +85,16 @@ use Mageplaza\Blog\Block\Post\ManagePost;
             </div>
         </div>
         <div class="field mp-field">
-            <label for="allow_comment" class="label"><span><?= /** @noEscape */ __('Allow Comment') ?></span></label>
+            <label for="allow_comment" class="label"><span><?= $escaper->escapeHtml(__('Allow Comment')) ?></span></label>
             <div class="control">
                 <select id="allow_comment" name="allow_comment">
-                    <option value="0"><span><?= /** @noEscape */ __('No') ?></option>
-                    <option value="1"><span><?= /** @noEscape */ __('Yes') ?></option>
+                    <option value="0"><span><?= $escaper->escapeHtml(__('No')) ?></option>
+                    <option value="1"><span><?= $escaper->escapeHtml(__('Yes')) ?></option>
                 </select>
             </div>
         </div>
         <div class="field mp-field">
-            <label for="publish_date" class="label"><span><?= /** @noEscape */ __('Publish Date') ?></span></label>
+            <label for="publish_date" class="label"><span><?= $escaper->escapeHtml(__('Publish Date')) ?></span></label>
             <div class="control">
                 <input name="publish_date" id="publish_date" type="text" data-validate="{'datetime-validation':true}">
                 <script>
@@ -114,8 +116,8 @@ use Mageplaza\Blog\Block\Post\ManagePost;
     <div class="actions-toolbar">
         <div class="primary">
             <button type="button" class="action submit primary mpblog-action-new"
-                    title="<?= $block->escapeHtmlAttr(__('Save')) ?>">
-                <span><?= /** @noEscape */ __('Save') ?></span>
+                    title="<?= $escaper->escapeHtmlAttr(__('Save')) ?>">
+                <span><?= $escaper->escapeHtml(__('Save')) ?></span>
             </button>
         </div>
     </div>
@@ -155,31 +157,31 @@ use Mageplaza\Blog\Block\Post\ManagePost;
                         "multiple": true,
                         "showCheckbox": true,
                         "options": <?= /** @noEscape */ $block->getCategoriesTree()?>
-                    },
-                    "customTopic": {
-                        "component": "Magento_Ui/js/form/element/ui-select",
-                        "template" : "Mageplaza_Blog/ui-select",
-                        "filterOptions": true,
-                        "levelsVisibility": "1",
-                        "multiple": true,
-                        "showCheckbox": true,
-                        "options": <?= /** @noEscape */ $block->getTopicTree()?>
-                    },
-                    "customTag": {
-                        "component": "Magento_Ui/js/form/element/ui-select",
-                        "template" : "Mageplaza_Blog/ui-select",
-                        "filterOptions": true,
-                        "levelsVisibility": "1",
-                        "multiple": true,
-                        "showCheckbox": true,
-                        "options": <?= /** @noEscape */ $block->getTagTree()?>
-                    }
-                }
-            }
-        },
-        "*": {
-            "Mageplaza_Blog/js/postAction": {
-            }
-        }
+    },
+    "customTopic": {
+        "component": "Magento_Ui/js/form/element/ui-select",
+        "template" : "Mageplaza_Blog/ui-select",
+        "filterOptions": true,
+        "levelsVisibility": "1",
+        "multiple": true,
+        "showCheckbox": true,
+        "options": <?= /** @noEscape */ $block->getTopicTree()?>
+    },
+    "customTag": {
+        "component": "Magento_Ui/js/form/element/ui-select",
+        "template" : "Mageplaza_Blog/ui-select",
+        "filterOptions": true,
+        "levelsVisibility": "1",
+        "multiple": true,
+        "showCheckbox": true,
+        "options": <?= /** @noEscape */ $block->getTagTree()?>
     }
+}
+}
+},
+"*": {
+"Mageplaza_Blog/js/postAction": {
+}
+}
+}
 </script>

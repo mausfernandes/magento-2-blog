@@ -21,12 +21,14 @@
 
 use Mageplaza\Blog\Block\Frontend;
 use Mageplaza\Blog\Model\Post;
+use Magento\Framework\Escaper;
 
 /** @var Frontend $block */
+/** @var Escaper $escaper */
 ?>
 <div class="mp-blog-rss">
-    <a href="<?= $block->escapeUrl($block->getRssUrl('post/rss')) ?>" class="bb-rss-icon">
-        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/rss.png')) ?>"
+    <a href="<?= $escaper->escapeUrl($block->getRssUrl('post/rss')) ?>" class="bb-rss-icon">
+        <img src="<?= $escaper->escapeUrl($block->getViewFileUrl('Mageplaza_Blog::media/images/rss.png')) ?>"
              width="16px">
     </a>
 </div>
@@ -41,18 +43,18 @@ use Mageplaza\Blog\Model\Post;
                     <div class="post-item-wraper">
                         <?php if ($post->getImage()) : ?>
                             <div class="post-image">
-                                <a href="<?= $block->escapeUrl($post->getUrl()) ?>">
+                                <a href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
                                     <img class="img-responsive"
-                                         src="<?= $block->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
-                                         alt="<?= /** @noEscape */ $post->getName(); ?>"/>
+                                         src="<?= $escaper->escapeUrl($block->resizeImage($post->getImage(), '400x')) ?>"
+                                         alt="<?= $escaper->escapeHtml($post->getName()); ?>"/>
                                 </a>
                             </div>
                         <?php endif; ?>
                         <div class="post-info-wraper">
                             <h2 class="mp-post-title">
-                                <a class="post-link-title" title="<?= /** @noEscape */ $post->getName(); ?>"
-                                   href="<?= $block->escapeUrl($post->getUrl()) ?>">
-                                    <?= /** @noEscape */ $post->getName() ?>
+                                <a class="post-link-title" title="<?= $escaper->escapeHtml($post->getName()); ?>"
+                                   href="<?= $escaper->escapeUrl($post->getUrl()) ?>">
+                                    <?= $escaper->escapeHtml($post->getName()) ?>
                                 </a>
                             </h2>
                             <div class="mp-post-info">
@@ -64,9 +66,9 @@ use Mageplaza\Blog\Model\Post;
                             <div class="mp-clearfix"></div>
                             <div class="mp-post-meta-info mp-alignright">
                                 <div class="actions">
-                                    <a class="mp-read-more" href="<?= $block->escapeUrl($post->getUrl()) ?>"
-                                       title="<?= $block->escapeHtmlAttr(__('Read More')) ?>">
-                                        <?= /** @noEscape */ __('Read More') ?>
+                                    <a class="mp-read-more" href="<?= $escaper->escapeUrl($post->getUrl()) ?>"
+                                       title="<?= $escaper->escapeHtmlAttr(__('Read More')) ?>">
+                                        <?= $escaper->escapeHtml(__('Read More')) ?>
                                     </a>
                                 </div>
                             </div>
@@ -77,7 +79,7 @@ use Mageplaza\Blog\Model\Post;
         </div>
         <?= $block->getPagerHtml() ?>
     <?php else : ?>
-        <?= /** @noEscape */ __('There are no posts at this moment') ?>
+        <?= $escaper->escapeHtml(__('There are no posts at this moment')) ?>
     <?php endif; ?>
     <?= $block->getChildHtml('additional'); ?>
 </div>
@@ -86,4 +88,3 @@ use Mageplaza\Blog\Model\Post;
         $('.limiter').css('float', 'right');
     });
 </script>
-
